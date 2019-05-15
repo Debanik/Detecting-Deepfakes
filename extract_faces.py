@@ -49,6 +49,7 @@ def frame_capture(path):
             # object
             box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
             (startX, startY, endX, endY) = box.astype("int")
+            # crop the image based on the detection
             frame = image[startY:endY, startX:endX]
             # Saves the frames  with frame-count
             cv2.imwrite("Face_images\\image%d.jpg" % count, frame)
