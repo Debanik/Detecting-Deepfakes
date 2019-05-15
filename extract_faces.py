@@ -1,6 +1,9 @@
 """
 Generate frames from videos obtained from a directory.
 Extract faces from those frames
+Based on:
+https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/
+https://github.com/kb22/Create-Face-Data-from-Images
 """
 # Program To Read video
 # and Extract Frames
