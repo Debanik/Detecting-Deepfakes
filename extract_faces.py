@@ -16,11 +16,11 @@ import cv2
 
 
 # Function to extract frames
-def frame_capture(path):
+def frame_capture(path, threshold=300):
     print("[INFO] loading model...")
     net = cv2.dnn.readNetFromCaffe('deploy.prototxt.txt', 'res10_300x300_ssd_iter_140000.caffemodel')
     # Path to video file
-    vidObj = cv2.VideoCapture(path)
+    vidobj = cv2.VideoCapture(path)
 
     # Used as counter variable
     count = 0
@@ -31,7 +31,9 @@ def frame_capture(path):
     while success:
         # vidObj object calls read
         # function extract frames
-        success, image = vidObj.read()
+        success, image = vidobj.read()
+        if not success:  # or count > threshold:
+            break
         (h, w) = image.shape[:2]
         blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 1.0,
                                      (300, 300), (104.0, 177.0, 123.0))
@@ -63,4 +65,4 @@ def frame_capture(path):
 # Driver Code
 if __name__ == '__main__':
     # Calling the function
-    frame_capture("a.mp4")
+    frame_capture("downloaded_videos\\manipulated_sequences\\Deepfakes\\c40\\videos\\000_003.mp4")
