@@ -11,7 +11,7 @@ print("[INFO] loading model...")
 net = cv2.dnn.readNetFromCaffe('deploy.prototxt.txt', 'res10_300x300_ssd_iter_140000.caffemodel')
 
 
-def frame_capture(path, label, start_counter=0, threshold=300):
+def frame_capture(path, output_path, label, start_counter=0, threshold=300):
     """Function to extract frames"""
     # Path to video file
     vidobj = cv2.VideoCapture(path)
@@ -55,7 +55,7 @@ def frame_capture(path, label, start_counter=0, threshold=300):
             # crop the image based on the detection
             frame = image[startY:endY, startX:endX]
             # Saves the frames  with frame-count
-            cv2.imwrite("Face_images/%s_%d.jpg" % (label, (start_counter + count)), frame)
+            cv2.imwrite("%s/%s_%d.jpg" % (output_path, label, (start_counter + count)), frame)
 
             count += 1
 

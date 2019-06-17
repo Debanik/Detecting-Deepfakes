@@ -2,12 +2,13 @@
 Program to search for video files under it's directory and generate cropped frame images of detected faces
 """
 
+import os
+import extract_faces_keep_in_mem
+import cv2
 
-def search_videos(input_dir=__file__, output_dir='~/'):
 
-    import os
-    import extract_faces_keep_in_mem
-    import cv2
+def search_videos(input_dir=__file__):
+
     dir_path = os.path.dirname(os.path.realpath(input_dir))
     threshold = int(input("Enter the number of images to be generated per video file: "))
     i = 0
@@ -24,13 +25,12 @@ def search_videos(input_dir=__file__, output_dir='~/'):
                                                             threshold=threshold)
                 i += threshold
 
-    temp = 0
-    for i in extract_faces_keep_in_mem.images:
-        cv2.imwrite("%s/%s_%d.jpg" % (output_dir, i[1], temp), i[0])
-        temp += 1
-
 
 if __name__ == '__main__':
     input_direc = input("Enter the absolute path of the input directory: ")
     output_direc = input("Enter the absolute path of the output directory: ")
-    search_videos(input_direc, output_direc)
+    search_videos(input_direc)
+    temp = 0
+    for i in extract_faces_keep_in_mem.images:
+        cv2.imwrite("%s/%s_%d.jpg" % (output_direc, i[1], temp), i[0])
+        temp += 1

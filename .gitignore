@@ -108,4 +108,5 @@ Face_images*
 venv
 .idea/inspectionProfiles/
 .idea/workspace.xml
+conda_env
 

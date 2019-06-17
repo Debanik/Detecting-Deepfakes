@@ -5,12 +5,7 @@ Based on:
 https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/
 https://github.com/kb22/Create-Face-Data-from-Images
 """
-# Program To Read video
-# and Extract Frames
-# from imutils.video import VideoStream
-# import argparse
-# import imutils
-# import time
+
 import numpy as np
 import cv2
 print("[INFO] loading model...")
