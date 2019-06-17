@@ -5,17 +5,24 @@ Based on:
 https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/
 https://github.com/kb22/Create-Face-Data-from-Images
 """
+# Program To Read video
+# and Extract Frames
+# from imutils.video import VideoStream
+# import argparse
+# import imutils
+# import time
 import numpy as np
 import cv2
 print("[INFO] loading model...")
 net = cv2.dnn.readNetFromCaffe('deploy.prototxt.txt', 'res10_300x300_ssd_iter_140000.caffemodel')
+images = []
 
 
-def frame_capture(path, label, start_counter=0, threshold=300):
-    """Function to extract frames"""
+# Function to extract frames
+def frame_capture(path, label, threshold=300):
+
     # Path to video file
     vidobj = cv2.VideoCapture(path)
-
     # Used as counter variable
     count = 0
 
@@ -55,8 +62,7 @@ def frame_capture(path, label, start_counter=0, threshold=300):
             # crop the image based on the detection
             frame = image[startY:endY, startX:endX]
             # Saves the frames  with frame-count
-            cv2.imwrite("Face_images/%s_%d.jpg" % (label, (start_counter + count)), frame)
-
+            images.append([frame, label])
             count += 1
 
 
