@@ -106,3 +106,6 @@ venv.bak/
 dummy_test_video_collection
 Face_images*
 venv
+.idea/inspectionProfiles/
+.idea/workspace.xml
+
