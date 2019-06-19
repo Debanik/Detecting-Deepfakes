@@ -6,7 +6,13 @@ import extract_faces
 
 
 def search_videos(input_dir=os.path.dirname(os.path.realpath(__file__)), output_dir='~/'):
-
+    
+    try:
+        os.mkdir(output_dir)
+        os.mkdir(output_dir+'/fake')
+        os.mkdir(output_dir+'/real')
+    except FileExistsError:
+        pass
     threshold = int(input("Enter the number of images to be generated per video file: "))
     i = 0
     for root, dirs, files in os.walk(input_dir):
@@ -29,10 +35,4 @@ def search_videos(input_dir=os.path.dirname(os.path.realpath(__file__)), output_
 if __name__ == '__main__':
     input_direc = input("Enter the absolute path of the input directory: ")
     output_direc = input("Enter the absolute path of the output directory: ")
-    try:
-        os.mkdir(output_direc)
-        os.mkdir(output_direc+'/fake')
-        os.mkdir(output_direc+'/real')
-    except FileExistsError:
-        pass
     search_videos(input_direc, output_direc)

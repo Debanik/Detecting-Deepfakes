@@ -106,7 +106,8 @@ venv.bak/
 dummy_test_video_collection
 Face_images*
 venv
+venv_cpu
 .idea/inspectionProfiles/
 .idea/workspace.xml
 conda_env
-temp
+temp*
