@@ -5,7 +5,7 @@ import os
 import extract_faces
 
 
-def search_videos(input_dir= os.path.dirname(os.path.realpath(__file__)), output_dir = '~/'):
+def search_videos(input_dir=os.path.dirname(os.path.realpath(__file__)), output_dir='~/'):
 
     threshold = int(input("Enter the number of images to be generated per video file: "))
     i = 0
