@@ -16,11 +16,11 @@ def search_videos(input_dir= os.path.dirname(os.path.realpath(__file__)), output
                 a = (root + '/' + str(file)).split('/')
 
                 if 'Deepfakes' in a or 'FaceSwap' in a or 'Face2Face' in a:
-                    extract_faces.frame_capture(path=(root+'/'+str(file)), output_path=output_dir, label='FAKE',
+                    extract_faces.frame_capture(path=(root+'/'+str(file)), output_path=output_dir+'/fake', label='FAKE',
                                                 start_counter=i, threshold=threshold)
 
                 else:
-                    extract_faces.frame_capture(path=(root + '/' + str(file)), output_path=output_dir, label='REAL',
+                    extract_faces.frame_capture(path=(root + '/' + str(file)), output_path=output_dir+'/real', label='REAL',
                                                 start_counter=i, threshold=threshold)
 
                 i += threshold
@@ -31,6 +31,8 @@ if __name__ == '__main__':
     output_direc = input("Enter the absolute path of the output directory: ")
     try:
         os.mkdir(output_direc)
+        os.mkdir(output_direc+'/fake')
+        os.mkdir(output_direc+'/real')
     except FileExistsError:
         pass
     search_videos(input_direc, output_direc)
