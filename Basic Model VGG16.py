@@ -33,27 +33,24 @@ validation_images = datagen.flow_from_directory(output_direc, class_mode='binary
 import tensorflow.keras.layers as layers
 from tensorflow.keras.layers import Input, Dense, Flatten, Conv2D, MaxPooling2D, BatchNormalization, Dropout, Reshape, Concatenate, LeakyReLU
 from tensorflow.keras.models import Model, Sequential
+from tensorflow.keras.applications import VGG16
+x = Input(shape = (256, 256, 3))
 
+#ImageNet weights
+model_vgg16 = VGG16(include_top=False)
 
-model = Sequential()
-model.add(layers.Input(shape = (256, 256, 3)))
+#Use the generated model 
+output_vgg16 = model_vgg16(x)
 
-model.add(layers.Conv2D(filters=6, kernel_size=(3, 3), activation='relu', input_shape=(32,32,1)))
-model.add(layers.AveragePooling2D())
+#Add the fully-connected layers 
+y = Flatten()(output_vgg16)
+y = Dense(1000, activation = 'relu')(y)
+y = Dense(1000, activation = 'relu')(y)
+y = Dropout(0.5)(y)
+y = Dense(1, activation='sigmoid')(y)
 
-model.add(layers.Conv2D(filters=16, kernel_size=(3, 3), activation='relu'))
-model.add(layers.AveragePooling2D())
-
-model.add(layers.Flatten())
-
-model.add(layers.Dense(units=120, activation='relu'))
-
-model.add(layers.Dense(units=84, activation='relu'))
-
-model.add(layers.Dense(units=1, activation = 'sigmoid'))
-
+model = Model(inputs = x, outputs = y)
 model.summary()
 
-
-model.compile(loss='mse', optimizer='adam',metrics=['accuracy'])
-model.fit_generator(training_images, validation_data = validation_images, epochs = 10)
+model.compile(loss='binary_crossentropy', optimizer='adam',metrics=['accuracy'])
+model.fit_generator(training_images, validation_data=validation_images, epochs=10)
