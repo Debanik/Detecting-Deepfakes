@@ -3,11 +3,11 @@ from PIL import Image
 from search_videos_in_directory import search_videos
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-input_direc = '/home/debanik/downloaded_videos'
-output_direc = '/home/debanik/PycharmProjects/Detecting-Deepfakes/Face_images_Face2Face_only_100'
-#
-# input_direc = input("Enter the absolute path of the input directory: ")
-# output_direc = input("Enter the absolute path of the output directory: ")
+# input_direc = '/home/debanik/downloaded_videos'
+# output_direc = '/home/debanik/PycharmProjects/Detecting-Deepfakes/Face_images_Face2Face_only_100'
+
+input_direc = input("Enter the absolute path of the input directory: ")
+output_direc = input("Enter the absolute path of the output directory: ")
 search_videos(input_direc, output_direc)
 
 
