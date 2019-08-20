@@ -34,4 +34,4 @@ _$ source myenv/bin/activate_
 _$pip install -r requirements.txt_
 
 ###### 5. Run the code
-_$python Basic\ Model\ MobileNet.py
+_$python Basic\ Model\ MobileNet.py_
