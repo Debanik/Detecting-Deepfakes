@@ -18,20 +18,20 @@ This work is an attempt to classify such videos as Fake or Authentic.
 Have the dataset and remember the location. You'll need to provide the absolute location address of the source videos as well as the absolute address of the directory where the extracted frames are to be stored
 
 ###### 1. Clone the github repo (of course)
-_$ git clone https://github.com/Debanik/Detecting-Deepfakes/_
+_$ git clone https://github.com/Debanik/Detecting-Deepfakes/_ <br/>
 _$ cd Detecting-Deepfakes_
 
 ###### 2. Create a virtual environment in Python 3
-Install virtualenv
-_$ sudo apt install virtualenv_
-Create virtual environment
-_$ python3 -m virtualenv myenv_
+Install virtualenv<br/>
+_$ sudo apt install virtualenv_<br/>
+Create virtual environment<br/>
+_$ python3 -m virtualenv myenv_<br/>
 
 ###### 3. Activate the virtualenv
-_$ source myenv/bin/activate_
+_$ source myenv/bin/activate_<br/>
 
 ###### 4. Install dependencies
-_$pip install -r requirements.txt_
+_$pip install -r requirements.txt_<br/>
 
 ###### 5. Run the code
-_$python Basic\ Model\ MobileNet.py_
+_$python Basic\ Model\ MobileNet.py_<br/>
