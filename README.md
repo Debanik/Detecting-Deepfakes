@@ -31,7 +31,7 @@ _$ python3 -m virtualenv myenv_<br/>
 _$ source myenv/bin/activate_<br/>
 
 ###### 4. Install dependencies
-_$pip install -r requirements.txt_<br/>
+_$ pip install -r requirements.txt_<br/>
 
 ###### 5. Run the code
-_$python Basic\ Model\ MobileNet.py_<br/>
+_$ python Basic\ Model\ MobileNet.py_<br/>
